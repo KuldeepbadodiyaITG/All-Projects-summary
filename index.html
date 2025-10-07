@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills Improvment</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+
+    <header>
+        <div class="container">
+            <img class="logoo"
+                src="https://png.pngtree.com/png-vector/20220131/ourmid/pngtree-skill-logo-concept-design-power-study-imagination-vector-png-image_23589882.png">
+            <input id="search" type="search" placeholder="Search...">
+            <nav>
+
+                <ul class="nav-links">
+                    <div id="time"></div>
+                    <li><a id="about" href="#">About</a></li>
+                    <li><a id="contact" href="#">Contact</a></li>
+                    <img id="profile"
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvts5aHBstDkR8PigS4RmZkbZy78zpZoSuOw&s">
+                    <img id="setting"
+                        src="https://static.vecteezy.com/system/resources/previews/021/190/084/non_2x/settings-filled-icon-in-transparent-background-basic-app-and-web-ui-bold-line-icon-eps10-free-vector.jpg">
+
+
+
+
+                    <div id="sidePanel" class="side-panel">
+                        <h2>Settings</h2>
+
+                        <label for="fontSelect">Font Family :</label>
+                        <select id="fontSelect">
+                            <option value="Arial">Arial</option>
+                            <option value="Georgia">Georgia</option>
+                            <option value="Courier New">Courier New</option>
+                            <option value="cursive">cursive</option>
+                        </select>
+
+                        <label for="font-size">Font-size :</label>
+                        <select id="font_size">
+                            <option value="x-large">x-large</option>
+                            <option value="large">large</option>
+                            <option value="small">small</option>
+                            <option value="medium">medium</option>
+                        </select>
+
+
+                        <label for="font-weight">Font-weight :</label>
+                        <select id="font_weight">
+                            <option value="bolder">bolder</option>
+                            <option value="lighter">lighter</option>
+                            <option value="normal">normal</option>
+                            <option value="900">900</option>
+                        </select>
+
+                        <br><br>
+                        <h3>🕘 History</h3>
+                        <div id="historyLog">
+                            <em>No actions yet.</em>
+                        </div>
+                        <label>
+                            <input type="checkbox" id="darkModeToggle"> Dark Mode
+                        </label>
+
+                        <br><br>
+                        <button onclick="closePanel()">Close</button>
+                    </div>
+
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="home">
+        <div class="main">
+            <p class="text">Build Your Skills Not🧿</p> <span id="typer"></span>
+        </div>
+        <div class="home-content">
+            <!-- <p class="text">Build Your Skills Not🧿</p> <span id="typer"></span> -->
+            <div class="box12">
+                <button id="study">Computer Languages🧾</button><br>
+                <button id="tool">Web Tools🎯🧿</button><br>
+                <button id="shoping">shopping🍭🍿</button>
+                <button id="game">Games⚽</button>
+                <button id="blog">Blogs🍿</button>
+                <button id="quetion">Add quetion Project🧾</button>
+                <button id="task">Task Manager👍</button>
+            </div>
+        </div>
+
+
+    </section>
+    <script src="script.js"></script>
+</body>
+
+</html>

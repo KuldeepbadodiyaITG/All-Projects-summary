@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Settings with History</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+nav button {
+  margin-right: 10px;
+  padding: 10px 15px;
+}
+
+#history {
+  margin-top: 20px;
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+}
+
+  </style>
+</head>
+<body>
+  <nav>
+    <button onclick="goTo('Home')">Home</button>
+    <button onclick="goTo('Profile')">Profile</button>
+    <button onclick="goTo('Settings')">Settings</button>
+  </nav>
+
+  <main id="main-content">
+    <h1>Welcome to the Home Page</h1>
+  </main>
+
+  <script>
+    let historyLog = [];
+
+function goTo(page) {
+  const main = document.getElementById('main-content');
+
+  // Add to history
+  const timestamp = new Date().toLocaleString();
+  historyLog.push(`${timestamp} - Visited ${page} Page`);
+
+  // Update content
+  if (page === 'Settings') {
+    showSettings();
+  } else {
+    main.innerHTML = `<h1>Welcome to the ${page} Page</h1>`;
+  }
+}
+
+function showSettings() {
+  const main = document.getElementById('main-content');
+
+  let historyHTML = '<h2>History</h2><ul>';
+  for (let item of historyLog.reverse()) {
+    historyHTML += `<li>${item}</li>`;
+  }
+  historyHTML += '</ul>';
+
+  main.innerHTML = `
+    <h1>Settings Page</h1>
+    <div id="history">${historyHTML}</div>
+  `;
+}
+
+  </script>
+</body>
+</html>

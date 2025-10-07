@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            background: url("https://img.freepik.com/free-vector/hexagon-shape-with-halftone-border-background_1409-1669.jpg?semt=ais_hybrid&w=740&q=80");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        button#btn {
+            margin-top: inherit;
+        }
+
+        div#Box {
+            background: aliceblue;
+        }
+
+        button {
+            padding: 10px;
+            background-color: blue;
+            color: white;
+            border: none;
+            border-radius: 24px;
+            cursor: pointer;
+            width: -webkit-fill-available;
+            margin-top: 30px;
+        }
+
+        textarea {
+            width: -webkit-fill-available;
+            border: thick;
+            resize: none;
+            border-radius: 25px;
+        }
+
+        p#firstNameError {
+            color: red;
+        }
+
+        .error {
+            color: red;
+            font-size: 12px;
+            font-size: small;
+            font-family: cursive;
+        }
+
+        #validationForm {
+            width: 500px;
+            height: 100%;
+            border: 1px solid white;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 0 30px #ccc;
+
+            animation: sideIn .6s;
+        }
+
+        @keyframes sideIn {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(0%);
+            }
+        }
+
+        #select {
+            width: -webkit-fill-available;
+            border: thick;
+            border-radius: 25px;
+            height: 30px;
+        }
+
+        .container {
+            text-align: left;
+            margin: 10px 10px;
+            color: white;
+        }
+
+        h1 {
+            text-align: center;
+
+            font-family: sans-serif;
+            color: white;
+        }
+
+        #quantity {
+            margin-top: 8px;
+        }
+
+        input {
+            width: -webkit-fill-available;
+            border: thick;
+            border-radius: 25px;
+            height: 30px;
+        }
+
+        h3 {
+            font-family: math;
+            color: darkblue;
+            font-size: 15px;
+        }
+
+        h3.block {
+            font-size: x-large;
+            color: indigo;
+        }
+
+        /* .block{
+            display: none;
+        } */
+    </style>
+</head>
+
+<body>
+    <div id="validationForm">
+        <h1>🛍️ Order Form </h1>
+
+        <div class="container">
+
+            Name :<input type="text" id="firstName" name="first name"><br>
+            <p class="er ror" id="firstNameError"></p><br>
+
+            Email :<input type="text" id="gmail" name="gmail"><br>
+            <p class="error" id="gmailError"></p><br>
+
+            Phone :<input type="text" id="phone" name="phone"><br>
+            <p class="error" id="phoneError"></p><br>
+
+            Address :<textarea name="addres" id="address" name="address"></textarea><br>
+            <p class="error" id="addressError"></p><br>
+
+
+            <div id="main">
+                <div id="box">
+                    Products :<select name="select" id="select">
+                        <option value="" name="select">--select Products--</option>
+                        <option value="T-shirts-₹ 400" name="select">T-shirts-₹ 400</option>
+                        <option value="hoodie-₹ 900" name="select">hoodie-₹ 900</option>
+                        <option value="cap-₹ 200" name="select">cap-₹ 200</option>
+                        <option value="shoes-₹ 1200" name="select">shoes-₹ 1200</option>
+                        <option value="bag-₹ 700" name="select">bag-₹ 700</option>
+                    </select><br>
+
+                    <input id="quantity" type="number" placeholder="quantity" min="0">
+                </div>
+            </div>
+            <button onclick="update()" id="btn" type="submit">+ Add Products</button>
+            <br>
+            <button id="btn2" type="submit" onclick="change()">Generate Receipt</button>
+        </div>
+    </div>
+
+    <br>
+    <div id="big">
+        <div class="receipt" id="Box">
+            <h3 class="block" id="receipt">
+                <h3>
+                    <p class="block" id="receiptDate"></p>
+                    <p class="block" id="receiptName"></p>
+                    <p class="block" id="receiptPhone"> </p>
+                    <p class="block" id="receiptEmail"> </p>
+                    <p class="block" id="receiptAddress"> </p>
+                    <div class="block" id="receiptProducts"></div>
+                    <p class="block" id="quantity"></p>
+                    <p id="receiptTotal"></p>
+        </div>
+    </div>
+
+    <script>
+        let select = document.getElementById("select");
+        document.getElementById("btn2").addEventListener("click", function (e) {
+            e.preventDefault();
+
+            document.querySelectorAll(".error").forEach(el => el.textContent = "");
+            let isValid = true;
+
+            const gmail = document.getElementById("gmail").value.trim();
+            const firstName = document.getElementById("firstName").value.trim();
+            const address = document.getElementById("address").value.trim();
+            const phone = document.getElementById("phone").value.trim();
+            const receiptProducts = document.getElementById("receiptProducts").value;
+            const receiptTotal = document.getElementById("receiptTotal").value;
+            const quantity = document.getElementById("quantity").value;
+            const box = document.getElementById("box")
+            let receipt = document.getElementById("receipt")
+            let big = document.getElementById("big")
+
+            if (firstName.length < 6) {
+                document.getElementById("firstNameError").textContent = "please enter your name";
+                isValid = false;
+            }
+            else {
+                document.getElementById("firstNameError").textContent = "";
+                isValid = true;
+            }
+
+            if (phone.length != 10) {
+                document.getElementById("phoneError").textContent = "phone number must be at least 10 didgits"
+                isValid = false;
+            }
+            for (var i = 0; i < phone.length; i++) {
+                var a = phone.charAt(i);
+                if (a < '0' || a > '9') {
+                    document.getElementById("phoneError").textContent = "phone number must be at least 10 digits"
+                    isValid = false;
+                }
+            }
+
+            if (gmail[0] == "@" || gmail[-1] == "@" || !gmail.includes("@") || !gmail.includes(".") || gmail[0, 1, 2, 3] == ".") {
+                document.getElementById("gmailError").textContent = "please enter a valid Email"
+                isValid = false;
+            }
+
+            if (!address) {
+                document.getElementById("addressError").textContent = "Address is required.";
+                isValid = false;
+            }
+
+            if (isValid) {
+                alert("Form submitted successfully!");
+                // document.getElementById("validationForm").reset();
+            }
+        })
+
+
+        function update() {
+            let main = document.getElementById("main");
+            let p = document.createElement("div");
+            p.innerHTML = ` Products :<select id="select">
+                    <option>--select Products--</option>
+                    <option>T-shirts-₹ 400</option>
+                    <option>hoodie-₹ 900</option>
+                    <option>cap-₹ 200</option>
+                    <option>shoes-₹ 1200</option>
+                    <option>bag-₹ 700</option>
+                </select><br>
+
+                <input id="quantity" type="number" placeholder="quantity" min="0">`
+
+            main.appendChild(p);
+        }
+
+        let object = {};
+
+        function objectValue(obj, key, value) {
+            obj[key] = value;
+            // return obj
+        }
+
+        const inputs = document.getElementById("validationForm");
+        console.log(inputs)
+
+        const form = document.getElementById("btn2")
+        form.addEventListener("click", (event) => {
+            event.preventDefault();
+
+
+            const inputs = document.getElementsByTagName("input")
+            Array.from(inputs).forEach(element => {
+
+                object[element.name] = element.value;
+
+                // console.log(element.name, element.value)
+            });
+
+            const address = document.getElementById('address').value;
+            object["address"] = address;
+
+            const select = document.getElementById('select').value;
+            object["products"] = select;
+
+            const quantity = document.getElementById('quantity').value;
+            object['quantity'] = quantity;
+
+            localStorage.setItem('userData', JSON.stringify(object));
+            //  console.log(object);
+            //window.location.href = "http://127.0.0.1:5500/project%2021-08-2025/2nd.html";
+
+        })
+
+
+        localStorage.setItem('userdata', JSON.stringify(object));
+
+
+        function change() {
+            let receiptDate = document.getElementById("receiptDate")
+            let receiptName = document.getElementById("receiptName")
+            let receiptPhone = document.getElementById("receiptPhone")
+            let receiptEmail = document.getElementById("receiptEmail")
+            let box1 = document.getElementById('big')
+            let receiptAddress = document.getElementById("receiptAddress")
+            let receiptProductss = document.getElementById('receiptProducts')
+            let receiptTotal = document.getElementById("receiptTotal")
+            let quantity = document.getElementById("quantity")
+            let selectValus = select.value;
+            let receipt = document.getElementById("receipt")
+            let big = document.getElementById("big")
+
+
+
+            big.style = ` width: 500px;
+            height: 100%;
+            border: 1px solid white;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 0 30px #ccc;`
+
+            receipt.innerText = `🧾 Receipt `
+            receiptDate.innerText = `Date : ${new Date().toLocaleString()}`
+            receiptName.innerText = `Name : ${firstName.value}`
+            receiptPhone.innerText = `Phone : ${phone.value}`
+            receiptEmail.innerText = `Gmail : ${gmail.value}`
+            receiptAddress.innerText = `Address : ${address.value}`
+            receiptProducts.innerText = `Products : ${selectValus}`
+            receiptTotal.innerText = `Total : ${receiptTotal.option}`
+            quantity.innerText = `quantity : ${quantity.value}`
+
+
+            let priceMatch = selectValus.match(/₹\s*(\d+)/);
+            let price = priceMatch ? parseInt(priceMatch[1]) : 0;
+            let qty = parseInt(quantity.value) || 0;
+            let total = price * qty;
+
+            receiptTotal.innerText = `Total : ₹ ${total}`;
+            quantity.innerText = `quantity : ${quantity.value}`
+
+        }
+    </script>
+</body>
+
+</html>
+
+</script>
+</body>
+
+</html>

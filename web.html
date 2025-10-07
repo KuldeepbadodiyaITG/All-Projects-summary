@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main {
+            font-size: 30px;
+            text-align: center;
+            height: 70px;
+            font-style: italic;
+            color: white;
+        }
+
+        body {
+            background: url("https://img.freepik.com/free-vector/gradient-black-backgrounds-with-golden-frames_23-2149150610.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
+            justify-self: anchor-center;
+            animation: sideIn .6s;
+        }
+   
+    @keyframes sideIn {
+      0% {
+        transform: translateX(-100%);
+      }
+
+      100% {
+        transform: translateX(0%);
+      }
+    }
+
+        button {
+            width: fit-content;
+        }
+
+        .text {
+            width: 500px;
+            height: 250px;
+            font-size: 20px;
+        }
+
+        .buttons {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        p#output {
+            color: white;
+        }
+
+        .btn {
+            background-color: linear-gradient(90deg, #8d6036, #bca4db);
+            border-radius: 10px;
+            font-size: 15px;
+        }
+
+        .texttt {
+            margin-top: 50px;
+        }
+
+        .btn:hover {
+            background: linear-gradient(90deg, #0554e7, #dbc1a4);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+    <div class="main">
+        Text Manipulation Web Tool Using HTML, CSS, and JavaScript
+    </div>
+
+    <div class="texttt">
+        <textarea class="text" id="area" placeholder="enter  text"></textarea>
+    </div>
+
+    <button onclick="updateText()">submit</button>
+
+    <p id="output"></p>
+
+
+    <div class="buttons">
+        <button onclick="textBold()" class="btn" id="btn1">Bold</button>
+        <button onclick=" textItalic()" class="btn" id="btn2">Italic</button>
+        <button onclick="textUppercase()" class="btn" id="btn3">Uppercase</button>
+        <button onclick="textLowercase()" class="btn" id="btn4">Lowercase</button>
+        <button onclick="Change_Text_Color()" class="btn" id="btn5">Change Text Color<input type="color"
+                id="color-input"></button>
+        <button onclick="Uppercase_Each_First_Letter()" class="btn" id="btn6">Uppercase Each First Letter</button>
+    </div>
+
+    <script>
+
+        function updateText() {
+            let inputText = document.getElementById("area").value;
+            document.getElementById("output").innerText = inputText;
+        }
+
+
+        let ele = document.getElementById("output");
+        function textBold() {
+            if (ele.style.fontWeight == "bold") {
+                ele.style.fontWeight = "100";
+            }
+            else {
+                ele.style.fontWeight = "bold";
+            }
+        }
+
+
+        let ele2 = document.getElementById("output");
+        function textItalic() {
+            if (ele.style.fontStyle == "italic") {
+                ele.style.fontStyle = "normal";
+            }
+            else {
+                ele.style.fontStyle = "italic";
+            }
+        }
+
+        let ele3 = document.getElementById("output");
+        function textUppercase() {
+            if (ele3.innerText == ele3.innerText.toUpperCase()) {
+                ele3.innerText = ele3.innerText.toLowerCase();
+            }
+            else (ele3.innerText = ele3.innerText.toUpperCase())
+        }
+
+        let ele4 = document.getElementById("output");
+        function textLowercase() {
+            if (ele4.innerText == ele4.innerText.toLowerCase()) {
+                // ele4.innerText = ele4.innerText.toUpperCase();
+            }
+            else (ele4.innerText = ele4.innerText.toLowerCase())
+        }
+
+        let ele5 = document.getElementById("output");
+        function Change_Text_Color() {
+            let cvalue = document.getElementById("color-input").value;
+            if (ele5.style.color == "black") {
+                ele5.style.color = cvalue;
+            }
+            else {
+                ele5.style.color = "black";
+            }
+        }
+
+        let ele6 = document.getElementById("output");
+        function Uppercase_Each_First_Letter() {
+            if (ele6.style.textTransform == "capitalize") {
+                ele6.style.textTransform = "unset";
+            }
+            else {
+                ele6.style.textTransform = "capitalize";
+            }
+        }
+    </script>
+</body>
+
+</html>

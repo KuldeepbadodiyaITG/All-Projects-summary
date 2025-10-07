@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: url(" https://png.pngtree.com/background/20220718/original/pngtree-elegant-black-with-light-gold-picture-image_1661557.jpg")
+        }
+
+        .about-us {
+
+            color: #fff;
+            padding: 80px 20px;
+        }
+
+        .about-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            max-width: 1200px;
+            margin: auto;
+            gap: 40px;
+        }
+
+        .about-text {
+            flex: 1 1 500px;
+        }
+
+        .about-text h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .about-text p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: #e0e0e0;
+        }
+
+        .about-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 12px 30px;
+            background-color: #fff;
+            color: #2575fc;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .about-btn:hover {
+            background-color: #2575fc;
+            color: #fff;
+            border: 1px solid #fff;
+        }
+
+        .about-image {
+            flex: 1 1 400px;
+            text-align: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            width: 500px;
+            height: 400px;
+            animation: sideIn .6s;
+        }
+         @keyframes sideIn {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(0%);
+            }
+        }
+
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .about-text h1 {
+                font-size: 32px;
+            }
+
+            .about-text p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="about-us">
+        <div class="about-container">
+            <div class="about-text">
+                <h1>Skills improvment</h1>
+                <p>
+                    Welcome to <strong>My Website Skills improvment</strong> — your ultimate destination for [ learning,
+                    shopping, tech news, Games,etc.].<br><br>
+                    Our mission is to provide high-quality, user-focused content that helps people grow, connect, and
+                    explore with confidence.
+                </p>
+                <p>
+                    Since our launch in 2025, we've served thousands of happy users with dedication and passion. We
+                    value innovation, transparency, and your trust.
+                </p>
+                <a href="contact.html" class="about-btn">Contact Us</a>
+            </div>
+            <div class="about-image">
+                <img src="https://media.istockphoto.com/id/1388635225/photo/businessman-click-on-skills.jpg?s=612x612&w=0&k=20&c=lsCABr8nyaj9E2gFnAuo5V0V_JnGz4d43IZVheP7eoo="
+                    alt="About Image">
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url("https://static.vecteezy.com/system/resources/thumbnails/025/414/760/small_2x/elegant-gold-thin-wave-line-with-golden-sparkle-in-black-background-premium-modern-golden-vector-illustration-free-photo.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 300px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .error {
+            color: red;
+            font-size: 12px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #second {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form id="validationForm">
+        <h2>Sign up</h2>
+
+        <input type="text" id="firstName" placeholder="Name">
+        <div class="error" id="firstNameError"></div>
+
+        <input type="text" id="gmail" placeholder="Gmail">
+        <div class="error" id="gmailError"></div>
+
+        <input type="text" id="password" placeholder="Password">
+        <div class="error" id="passwordError"></div>
+
+        <button onclick="signup()" id="btn" type="submit">Sign Up</button>
+        <p><a href="#" id="login">login</a></p>
+    </form>
+
+
+
+
+    <div id="second">
+        <form id="validationForm2">
+            <h2>Log In</h2>
+
+            <input type="text" id="mail" placeholder="Gmail">
+            <div class="error" id="gmailError"></div>
+
+            <input type="text" id="confirmPassword" placeholder="Confirm Password">
+            <div class="error" id="confirmPasswordError"></div>
+
+            <button onclick="logIn()" id="btn2" type="submit">Log In</button>
+            <p><a href="#" id="Sign">Sign In</a></p>
+        </form>
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        const date = new Date();
+        date.setTime(date.getTime() + 5 * 60 * 1000);
+        const expires = "; expires=" + date.toUTCString();
+        let name = document.getElementById("firstName")
+        let email = document.getElementById("gmail")
+        let password = document.getElementById("password")
+        let signBox = document.getElementById('validationForm');
+        let loginBox = document.getElementById('validationForm2')
+
+
+        const url = "https://ewltest.vercel.app/api/v1/Auth/Signup"
+
+        async function signup() {
+            try {
+                const data = await axios.post(url, {
+                    Name: name.value,
+                    Email: email.value,
+                    Password: password.value,
+                });
+                if (data.data.success) {
+                    document.cookie = `username=${name.value}; ${expires}; path=/`;
+                }
+                console.log(data.data)
+            } catch (error) {
+                console.log("error", error.message)
+            }
+        }
+
+
+        const url2 = "https://ewltest.vercel.app/api/v1/Auth/Login"
+
+        async function logIn() {
+            try {
+                const data = await axios.post(url2, {
+                    Name: name.value,
+                    Email: email.value,
+                    Password: password.value,
+                });
+                if (data.data.success) {
+                    window.location.href = "http://127.0.0.1:5500/index.html#"
+
+                }
+                console.log(data.data)
+            } catch (error) {
+                console.log("error", error.message)
+            }
+        }
+
+
+
+        document.getElementById("validationForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+        })
+
+        document.getElementById('login').addEventListener('click', () => {
+            let login = true;
+            if (login) {
+                let box = document.getElementById('second');
+                box.style.display = 'block';
+                let form = document.getElementById('validationForm');
+                form.style.display = 'none';
+
+
+            } else {
+                box.style.display = 'none';
+                form.style.display = 'block';
+
+            }
+        })
+
+
+        document.getElementById('Sign').addEventListener('click', () => {
+            let login = true;
+            if (login) {
+                let box = document.getElementById('second');
+                box.style.display = 'none';
+                let form = document.getElementById('validationForm');
+                form.style.display = 'block';
+            } else {
+                box.style.display = 'block';
+                form.style.display = 'none';
+            }
+        })
+
+
+
+        let element = document.getElementById("btn")
+        element.addEventListener("click", () => {
+            alert("please click on log in button")
+        })
+
+
+        let ele = document.getElementById("btn2")
+        ele.addEventListener("click", () => {
+            alert("form successfully submit")
+            window.location.href = "http://127.0.0.1:5500/index.html#"
+        })
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>

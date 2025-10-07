@@ -1,0 +1,42 @@
+/* .logoo {
+    height: 60px;
+    width: auto;
+    animation: zoomIn 1s ease forwards;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: "";
+    height: 2px;
+    width: 0;
+    background: cyan;
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    transition: 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+#profile,
+#setting {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    filter: drop-shadow(0 0 5px white);
+    transition: transform 0.3s ease;
+}
+
+#profile:hover,
+#setting:hover {
+    transform: scale(1.1);
+} */

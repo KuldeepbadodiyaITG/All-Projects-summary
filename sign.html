@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url("https://images.blocksurvey.io/cdn-cgi/imagedelivery/G6cPOuGZ4Z_bEV13gBxixw/template-category/event-experience.svg/l");
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    margin: auto;
+  
+}
+
+
+        form {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 300px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .error {
+            color: red;
+            font-size: 12px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #second {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+   
+        <h2>Sign up</h2>
+
+        <input type="text" id="firstName" placeholder="Name">
+     
+        <input type="text" id="gmail" placeholder="Gmail">
+       
+        <input type="text" id="password" placeholder="Password">
+        
+
+
+        <button id="btn">send</button>
+   
+    <script>
+        let btn = document.getElementById("btn")
+ let firstName = document.getElementById("firstName");
+        let gmail = document.getElementById("gmail");
+        let password = document.getElementById("password");
+       
+        btn.addEventListener("click", function () {
+
+
+
+            async function addqu() {
+                try {
+                    const url = " https://ai-agent-steel-ten.vercel.app/api/v1/auth/Signup"
+                    const response = await fetch(url, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            Email: gmail.value,
+                            Password: password.value,
+                            Name: firstName.value
+
+                        }),
+
+                    })
+                    const deta = await response.json()
+                    console.log(deta)
+                   const obj={
+                      Email: gmail.value,
+                            Password: password.value,
+                            Name: firstName.value,
+
+                            id:deta.user._id
+                   }
+                   const objs=JSON.stringify(obj)
+                   localStorage.setItem("userdata",objs)
+                   console.log(objs)
+                } catch (e) {
+                    console.log(e)
+                }
+
+            }
+            addqu()
+        })
+
+
+
+    btn.addEventListener("click",()=>{
+        window.location.href = "/index.html"
+    })
+    </script>
+
+
+</body>
+
+</html>

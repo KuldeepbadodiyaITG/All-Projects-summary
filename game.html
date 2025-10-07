@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Click the Circle Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 30px;
+      background: url("https://img.freepik.com/premium-photo/black-grey-background-with-black-white-design_994023-68871.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      color: white;
+      animation: sideIn .6s;
+    }
+
+
+
+    @keyframes sideIn {
+      0% {
+        transform: translateX(-100%);
+      }
+
+      100% {
+        transform: translateX(0%);
+      }
+    }
+
+    #game-area {
+      width: 500px;
+      height: 400px;
+      margin: 20px auto;
+      border: 2px solid black;
+      position: relative;
+      background-color: #f9f9f9;
+    }
+
+    .circle {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: red;
+      position: absolute;
+      cursor: pointer;
+    }
+
+    #score,
+    #timer {
+      font-size: 20px;
+      margin: 10px;
+      font-size:;
+    }
+
+    #start-btn {
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <h1>🎯 Click the Circle Game 🎯</h1>
+  <button id="start-btn">Start Game</button>
+  <div id="score">Score: 0</div>
+  <div id="timer">Time Left: 30s</div>
+  <div id="game-area"></div>
+
+
+
+</body>
+
+</html>
+<script>
+
+  const startBtn = document.getElementById("start-btn");
+  const scoreDisplay = document.getElementById("score");
+  const timerDisplay = document.getElementById("timer");
+  const gameArea = document.getElementById("game-area");
+
+
+  let score = 0;
+  let timeLeft = 30;
+  let moveCircleInterval;
+  let countdownInterval;
+  let gameTimeout;
+  let circle;
+
+
+  function startGame() {
+
+
+    score = 0;
+    timeLeft = 30;
+    scoreDisplay.innerText = "Score: 0";
+    timerDisplay.innerText = "Time Left: 30s";
+    startBtn.disabled = true;
+
+
+
+
+    if (!circle) {
+      circle = document.createElement("div");
+      circle.classList.add("circle");
+      gameArea.appendChild(circle);
+    }
+
+
+    moveCircle();
+
+
+    circle.addEventListener("click", handleCircleClick);
+
+
+    moveCircleInterval = setInterval(moveCircle, 1000);
+
+
+    countdownInterval = setInterval(() => {
+      timeLeft--;
+      timerDisplay.innerText = `Time Left: ${timeLeft}s`;
+    }, 1000);
+
+
+    gameTimeout = setTimeout(endGame, 30000);
+  }
+
+
+  function handleCircleClick() {
+    score++;
+    scoreDisplay.innerText = "Score: " + score;
+    moveCircle();
+  }
+
+
+  function moveCircle() {
+    const maxX = gameArea.clientWidth - 50;
+    const maxY = gameArea.clientHeight - 50;
+    const randomX = Math.floor(Math.random() * maxX);
+    const randomY = Math.floor(Math.random() * maxY);
+
+
+    circle.style.left = `${randomX}px`;
+    circle.style.top = `${randomY}px`;
+  }
+
+
+  function endGame() {
+    clearInterval(moveCircleInterval);
+    clearInterval(countdownInterval);
+    circle.removeEventListener("click", handleCircleClick);
+    startBtn.disabled = false;
+    alert("Game Over! Your final score is: " + score);
+  }
+
+
+  startBtn.addEventListener("click", startGame);
+</script>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Settings Panel</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .side-panel {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 250px;
+            height: 100%;
+            background-color: #f0f0f0;
+            border-left: 1px solid #ccc;
+            padding: 20px;
+            transition: right 0.3s;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .side-panel.open {
+            right: 0;
+        }
+
+        .dark-mode {
+            background-color: #121212;
+            color: white;
+        }
+
+        .dark-mode .side-panel {
+            background-color: #333;
+            color: white;
+        }
+
+        #historyLog {
+            max-height: 150px;
+            overflow-y: auto;
+            font-size: 0.9em;
+            background: #eaeaea;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+
+        .dark-mode #historyLog {
+            background-color: #444;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="settingsBtn">⚙️ Settings</button>
+
+    <div id="sidePanel" class="side-panel">
+        <h2>Settings</h2>
+
+        <label for="fontSelect">Font Family:</label>
+        <select id="fontSelect">
+            <option value="Arial">Arial</option>
+            <option value="Georgia">Georgia</option>
+            <option value="Courier New">Courier New</option>
+        </select>
+
+        <br><br>
+
+        <label>
+            <input type="checkbox" id="darkModeToggle"> Dark Mode
+        </label>
+
+        <br><br>
+
+        <h3>🕘 History</h3>
+        <div id="historyLog">
+            <em>No actions yet.</em>
+        </div>
+
+        <br>
+        <button onclick="closePanel()">Close</button>
+    </div>
+
+    <div id="content">
+        <h1>Welcome to My Website</h1>
+        <p>This is a sample content.</p>
+    </div>
+
+    <script>
+        const settingsBtn = document.getElementById('settingsBtn');
+        const sidePanel = document.getElementById('sidePanel');
+        const fontSelect = document.getElementById('fontSelect');
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const historyLog = document.getElementById('historyLog');
+
+        let history = [];
+
+        function addToHistory(action) {
+            const timestamp = new Date().toLocaleTimeString();
+            history.push(`[${timestamp}] ${action}`);
+            updateHistoryUI();
+        }
+
+        function updateHistoryUI() {
+            if (history.length === 0) {
+                historyLog.innerHTML = "<em>No actions yet.</em>";
+            } else {
+                historyLog.innerHTML = history.map(entry => `<div>${entry}</div>`).join('');
+            }
+        }
+
+        settingsBtn.addEventListener('click', () => {
+            sidePanel.classList.toggle('open');
+            addToHistory("Opened settings panel");
+        });
+
+        function closePanel() {
+            sidePanel.classList.remove('open');
+            addToHistory("Closed settings panel");
+        }
+
+        fontSelect.addEventListener('change', (e) => {
+            const selectedFont = e.target.value;
+            document.body.style.fontFamily = selectedFont;
+            addToHistory(`Changed font to ${selectedFont}`);
+        });
+
+        darkModeToggle.addEventListener('change', (e) => {
+            const isDark = e.target.checked;
+            document.body.classList.toggle('dark-mode', isDark);
+            addToHistory(`Turned ${isDark ? 'on' : 'off'} dark mode`);
+        });
+    </script>
+</body>
+
+</html>

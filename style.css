@@ -1,0 +1,560 @@
+ * {
+     margin: 0px;
+     padding: 0px;
+     text-decoration: none;
+     box-sizing: border-box;
+ }
+
+ body {
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+     color: #fff;
+     background: url('https://png.pngtree.com/thumb_back/fw800/background/20220630/pngtree-simple-line-with-dark-background-and-gold-image_1416159.jpg') no-repeat center center/cover
+ }
+
+
+ header {
+     background-color: currentColor;
+     width: 100%;
+     z-index: 1000;
+ }
+
+ .home-content {
+     animation: fadeUp 1.2s ease-out;
+     display: flex;
+     justify-content: center;
+ }
+
+ header {
+     animation: fadeInDown 1s ease-in-out;
+     padding: 20px;
+ }
+
+ .container {
+     width: 90%;
+     margin: 0 auto;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+ }
+
+ select#font_weight {
+     width: fit-content;
+ }
+
+
+ .logoo {
+     width: 150px;
+     /* Adjust size as needed */
+     animation: zoomAnimation 3s infinite ease-in-out;
+ }
+
+ @keyframes zoomAnimation {
+
+     0%,
+     100% {
+         transform: scale(1);
+     }
+
+     50% {
+         transform: scale(1.3);
+         /* Zoom in to 130% */
+     }
+ }
+
+ select#font_size {
+     width: fit-content;
+ }
+
+ .nav-links {
+     list-style: none;
+     display: flex;
+     flex-direction: row;
+     align-items: anchor-center;
+     gap: 10px;
+ }
+
+ .nav-links li {
+     margin-left: 20px;
+ }
+
+ .nav-links a {
+     text-decoration: none;
+     font-weight: 500;
+     transition: color 0.3s;
+     color: black;
+     /* text-decoration: none;
+     font-weight: bold; */
+     position: relative;
+ }
+
+ .nav-links a:hover::after {
+     width: 100%;
+ }
+
+ .nav-links a::after {
+     content: "";
+     height: 2px;
+     width: 0;
+     background: #0072ff;
+     position: absolute;
+     left: 0;
+     bottom: -5px;
+     transition: 0.3s ease;
+ }
+
+ p.text {
+     font-family: cursive;
+     padding: 21px;
+ }
+
+ .home::before {
+     content: "";
+     position: absolute;
+     top: 0;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     background-size: cover;
+     background-position: center;
+     background-repeat: no-repeat;
+     z-index: -1;
+     animation: slider 15s infinite;
+     opacity: 0.8;
+     filter: brightness(0.7);
+ }
+
+ @keyframes slider {
+     0% {
+         background-image: url('https://img.freepik.com/free-vector/gradient-black-backgrounds-with-golden-frames_23-2149150610.jpg');
+     }
+
+     33% {
+         background-image: url('https://png.pngtree.com/background/20220730/original/pngtree-modern-dark-brown-and-golden-lines-combination-background-design-with-overlap-picture-image_1879388.jpg');
+     }
+
+     66% {
+         background-image: url('https://png.pngtree.com/thumb_back/fw800/background/20220630/pngtree-simple-line-with-dark-background-and-gold-image_1416159.jpg');
+     }
+
+     100% {
+         background-image: url('https://img.freepik.com/free-vector/gradient-luxury-background_23-2148974627.jpg?semt=ais_hybrid&w=740&q=80');
+     }
+ }
+
+ Overlay to darken background image .home::before {
+     content: '';
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background-color: rgba(0, 0, 0, 0.5);
+     z-index: 1;
+ }
+
+ button#tool {
+     padding: 10px;
+     width: 500px;
+     border-radius: 20px;
+     border: hidden;
+     font-family: cursive;
+     cursor: pointer;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+     animation: sideIn .6s;
+ }
+
+ #game {
+     padding: 10px;
+     width: 500px;
+     border-radius: 20px;
+     border: hidden;
+     font-family: cursive;
+     cursor: pointer;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+     animation: sideIn .6s;
+     margin-top: 18px;
+ }
+
+ #shoping {
+     padding: 10px;
+     width: 500px;
+     border-radius: 20px;
+     border: hidden;
+     font-family: cursive;
+     cursor: pointer;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+     animation: sideIn .6s;
+ }
+
+ #blog {
+     padding: 10px;
+     width: 500px;
+     border-radius: 20px;
+     border: hidden;
+     font-family: cursive;
+     cursor: pointer;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+     animation: sideIn .6s;
+     margin-top: 20px;
+ }
+
+ #quetion {
+     padding: 10px;
+     width: 500px;
+     border-radius: 20px;
+     border: hidden;
+     font-family: cursive;
+     cursor: pointer;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+     animation: sideIn .6s;
+     margin-top: 20px;
+ }
+
+ #task {
+     padding: 10px;
+     width: 500px;
+     border-radius: 20px;
+     border: hidden;
+     font-family: cursive;
+     cursor: pointer;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+     animation: sideIn .6s;
+     margin-top: 20px;
+ }
+
+ @keyframes sideIn {
+     0% {
+         transform: translateX(-100%);
+     }
+
+     100% {
+         transform: translateX(0%);
+     }
+ }
+
+ #study {
+     padding: 10px;
+     width: 500px;
+     border-radius: 20px;
+     border: hidden;
+     font-family: cursive;
+     cursor: pointer;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+     animation: sideIn .6s;
+
+ }
+
+ #profile {
+     width: 50px;
+     height: 30px;
+     margin-left: 20px;
+     cursor: pointer;
+ }
+
+ #time {
+     color: black;
+ }
+
+ .logoo {
+     height: 50px;
+     width: 125px;
+     cursor: pointer;
+ }
+
+ .profile {
+     width: 50px;
+     height: 10px;
+ }
+
+ #search {
+     width: 150px;
+     padding: 10px 15px;
+     font-size: 16px;
+     border: 2px solid #ccc;
+     border-radius: 25px;
+     transition: width 0.4s ease, border-color 0.4s ease;
+     outline: none;
+ }
+
+ /* On focus: expand width, change border, add glow pulse */
+ #search {
+     width: 280px;
+
+     animation: pulseGlow 2s infinite;
+     box-shadow: 0 0 8px rgba(0, 123, 255, 0.7);
+ }
+
+ /* Glowing pulse animation */
+ @keyframes pulseGlow {
+
+     0%,
+     100% {
+         box-shadow: 0 0 8px rgba(0, 123, 255, 0.7);
+     }
+
+     50% {
+         box-shadow: 0 0 15px rgba(0, 123, 255, 1);
+     }
+ }
+
+ /* Fade out placeholder on focus */
+ #search:focus::placeholder {
+     color: transparent;
+     transition: color 0.3s ease;
+ }
+
+ Home Content .home-content {
+     position: relative;
+     z-index: 2;
+     display: flex;
+     flex-direction: column;
+     gap: 5px;
+     align-self: center;
+     align-items: center;
+ }
+
+ .home-content h2 {
+     font-size: 48px;
+     margin-bottom: 20px;
+ }
+
+ .home-content p {
+     font-size: 20px;
+     margin-bottom: 23px;
+     font-family: cursive;
+     font-size: 18px;
+     margin-top: 100px;
+ }
+
+ .btn {
+     padding: 12px 30px;
+     background-color: #ffcc00;
+     color: #000;
+     border: none;
+     border-radius: 5px;
+     text-decoration: none;
+     font-weight: bold;
+     transition: background 0.3s;
+ }
+
+ .btn:hover {
+     background-color: #e6b800;
+ }
+
+ .thought {
+     font-family: cursive;
+     color: white;
+     width: 250px;
+     margin-right: 700px;
+     margin-top: 128px;
+ }
+
+ #setting {
+     width: 50px;
+     /* adjust size as needed */
+     animation: rotateRound 3s linear infinite;
+     cursor: pointer;
+     /* optional, to show it’s clickable */
+ }
+
+ @keyframes rotateRound {
+     0% {
+         transform: rotate(0deg);
+     }
+
+     100% {
+         transform: rotate(360deg);
+     }
+ }
+
+ .box12 {
+     display: flex;
+     flex-direction: column;
+     /* align-content: center; */
+     text-align: center;
+     margin-top: 100px;
+ }
+
+ .main {
+     display: ruby;
+ }
+
+ span#typer {
+     font-family: cursive;
+     font-size: 22px;
+ }
+
+ body {
+     font-family: Arial, sans-serif;
+     transition: background 0.3s, color 0.3s;
+ }
+
+ .side-panel {
+     position: fixed;
+     top: 0;
+     right: -300px;
+     width: 250px;
+     height: 100%;
+     background-color: #f0f0f0;
+     border-left: 1px solid #ccc;
+     padding: 20px;
+     transition: right 0.3s;
+     z-index: 1000;
+ }
+
+ .side-panel.open {
+     right: 0;
+     color: black;
+     display: flex;
+     flex-direction: column;
+     gap: 20px;
+ }
+
+ .dark-mode {
+     background-color: #121212;
+     color: white;
+ }
+
+ .dark-mode .side-panel {
+     background-color: #333;
+     color: white;
+ }
+
+ select#fontSelect {
+     max-width: min-content;
+     border: hidden;
+ }
+
+ button {
+     width: fit-content;
+     padding: 8px;
+     border-radius: 20px;
+     border: hidden;
+     background: white;
+ }
+
+ div#sidePanel {
+     background-image: url('https://png.pngtree.com/background/20220730/original/pngtree-modern-dark-brown-and-golden-lines-combination-background-design-with-overlap-picture-image_1879388.jpg');
+     color: white;
+ }
+
+
+
+
+
+
+ /* -------------------- ENHANCED ANIMATIONS & STYLES -------------------- */
+
+ /* ✨ Buttons hover animation */
+ button:hover {
+     transform: scale(1.03);
+     box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
+     transition: all 0.3s ease-in-out;
+ }
+
+ /* ✨ Button glowing border on hover */
+ button:hover::after {
+     content: '';
+     position: absolute;
+     inset: 0;
+     border-radius: 20px;
+     padding: 2px;
+     background: linear-gradient(45deg, #ff4e50, #f9d423, #00c6ff, #0072ff);
+     background-size: 400%;
+     animation: glowBorder 5s linear infinite;
+     z-index: -1;
+ }
+
+ button {
+     position: relative;
+     overflow: hidden;
+ }
+
+ /* ✨ Header fade-in */
+ header {
+     animation: fadeInDown 1s ease-in-out;
+ }
+
+ /* ✨ Typer animation blinking cursor */
+ #typer {
+     animation: blinkText 1s infinite;
+ }
+
+ /* ✨ Smooth content entrance */
+ .home-content {
+     animation: fadeUp 1.2s ease-out;
+ }
+
+ /* ✨ Profile/Setting Icons hover bounce */
+ #profile:hover,
+ #setting:hover {
+     transform: scale(1.1) rotate(5deg);
+     transition: 0.3s ease-in-out;
+ }
+
+ /* ✨ Side panel slide-in animation */
+ .side-panel {
+     animation: slideLeft 0.8s ease-in-out;
+ }
+
+ /* -------------------- Keyframes -------------------- */
+
+ @keyframes glowBorder {
+     0% {
+         background-position: 0% 50%;
+     }
+
+     50% {
+         background-position: 100% 50%;
+     }
+
+     100% {
+         background-position: 0% 50%;
+     }
+ }
+
+ @keyframes fadeInDown {
+     from {
+         opacity: 0;
+         transform: translateY(-50px);
+     }
+
+     to {
+         opacity: 1;
+         transform: translateY(0px);
+     }
+ }
+
+ @keyframes fadeUp {
+     from {
+         opacity: 0;
+         transform: translateY(30px);
+     }
+
+     to {
+         opacity: 1;
+         transform: translateY(0);
+     }
+ }
+
+ @keyframes blinkText {
+
+     0%,
+     100% {
+         opacity: 1;
+     }
+
+     50% {
+         opacity: 0.5;
+     }
+ }
+
+ @keyframes slideLeft {
+     0% {
+         transform: translateX(100%);
+     }
+
+     100% {
+         transform: translateX(0%);
+     }
+ }
